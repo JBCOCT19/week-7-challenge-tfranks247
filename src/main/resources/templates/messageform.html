@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<body>
+
+<div th:replace="base :: navlinks"></div>
+
+<div class="jumbotron jumbotron-fluid custom2">
+    <div class="container">
+        <h1 class="display-4 text-center">Message Form</h1>
+        <p class="lead text-center">Fill out the form and submit!.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="col-2"></div>
+    <div class="col-8 content">
+        <form action="#" th:action="@{/process}" th:object="${message}" method="post"
+              enctype="multipart/form-data" class="custom">
+            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{image}" />
+            <input type="hidden" th:field="*{id}" />
+            <span th:if="${#fields.hasErrors('id')}"
+                  th:errors="*{id}"></span>
+            Content :<input class="form-control" type="text" th:field="*{content}"/>
+            <span th:if="${#fields.hasErrors('content')}"
+                  th:errors="*{content}"></span><br />
+            Date :<input class="form-control" type="date" th:field="*{date}" />
+            <span th:if="${#fields.hasErrors('date')}"
+                  th:errors="*{date}"></span><br />
+            Sent by :<input class="form-control" type="text" th:field="*{sentBy}" />
+            <span th:if="${#fields.hasErrors('sentBy')}"
+                  th:errors="*{sentBy}"></span><br />
+            Image :<input type="file" name="file"/>
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+
+    </div>
+    <div class="col-2"></div>
+</div>
+
+</body>
+</html>
+

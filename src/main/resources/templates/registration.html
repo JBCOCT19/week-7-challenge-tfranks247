@@ -3,46 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 <body>
-<h4>New User Registration</h4>
+<div th:replace="base :: navlinks"></div>
+
+<div class="jumbotron jumbotron-fluid custom2" style="background-color: white">
+    <div class="container">
+        <h1 class="display-4 text-center">New User Registration Form</h1>
+        <p class="lead text-center">Fill out the form and submit!.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="col-2"></div>
+    <div class="col-8 content">
 <form autocomplete="off"
       action="#"
       th:action="@{/register}"
-      th:object="${user}" method="post">
+      th:object="${user}" method="post" class="custom">
 
-    First Name <mark><strong>
+    First Name: <strong>
     <span th:if="${#fields.hasErrors('firstName')}"
-          th:errors="*{firstName}">First Name Error</span></strong></mark>
-    <input type="text" id="firstName" placeholder="First Name"
+          th:errors="*{firstName}">First Name Error</span></strong>
+    <input class="form-control" type="text" id="firstName" placeholder="First Name"
            th:field="*{firstName}" /><br />
 
-    Last Name <mark><strong>
+    Last Name: <strong>
     <span th:if="${#fields.hasErrors('lastName')}"
-          th:errors="*{lastName}">Last Name Error</span></strong></mark>
-    <input type="text" id="lastName" placeholder="Last Name"
+          th:errors="*{lastName}">Last Name Error</span></strong>
+    <input class="form-control" type="text" id="lastName" placeholder="Last Name"
            th:field="*{lastName}" /><br />
 
-    Email <mark><strong>
+    Email: <strong>
     <span th:if="${#fields.hasErrors('email')}"
-          th:errors="*{email}">EmailError</span></strong></mark>
-    <input type="text" id="email" placeholder="Email"
+          th:errors="*{email}">EmailError</span></strong>
+    <input class="form-control" type="text" id="email" placeholder="Email"
            th:field="*{email}" />
     <br/>
 
-    Username <mark><strong>
+    Username: <strong>
     <span th:if="${#fields.hasErrors('username')}"
-          th:errors="*{username}">Username Error</span></strong></mark>
-    <input type="text" id="username"
+          th:errors="*{username}">Username Error</span></strong>
+    <input class="form-control" type="text" id="username"
            placeholder="Username" th:field="*{username}" /><br />
 
-    Password <mark><strong>
+    Password: <strong>
     <span th:if="${#fields.hasErrors('password')}"
-          th:errors="*{password}">Password Error</span></strong></mark>
-    <input type="text" id="password" placeholder="password"
+          th:errors="*{password}">Password Error</span></strong>
+    <input class="form-control" type="text" id="password" placeholder="password"
            th:field="*{password}" /><br />
 
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
+    </div>
+</div>
+
 </body>
 </html>
